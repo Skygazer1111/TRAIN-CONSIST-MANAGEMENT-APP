@@ -4,7 +4,7 @@ import java.util.List;
 public class TrainConsistManagementApp {
 
     public static void main(String[] args) {
-        System.out.println("\n=== UC12: Safety Compliance Check ===\n");
+        System.out.println("=== UC12: Safety Compliance Check ===");
 
         List<GoodsBogie> goodsBogies = new ArrayList<>();
         goodsBogies.add(new GoodsBogie("Cylindrical", "Petroleum"));
