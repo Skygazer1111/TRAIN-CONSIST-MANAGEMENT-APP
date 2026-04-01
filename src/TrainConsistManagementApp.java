@@ -7,6 +7,7 @@ public class TrainConsistManagementApp {
     public static void main(String[] args) {
 
         System.out.println("============================");
+        System.out.println("Total Train Capacity");
         System.out.println("Group Bogies by Type");
         System.out.println("============================\n");
 
@@ -19,6 +20,10 @@ public class TrainConsistManagementApp {
         bogieList.add(new Bogie("AC Chair", 58));
 
         BogieService service = new BogieService();
+
+        int totalCapacity = service.getTotalCapacity(bogieList);
+
+        System.out.println("Total Seating Capacity: " + totalCapacity);
 
         Map<String, List<Bogie>> grouped = service.groupByType(bogieList);
 
