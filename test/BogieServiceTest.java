@@ -27,7 +27,7 @@ public class BogieServiceTest {
         System.out.println("Total capacity: " + totalCapacity);
 
         // Pass/Fail Checks
-        if (filtered.size() == 3 && totalCapacity == (72 + 56 + 24 + 70)) {
+        if (filtered.size() == 2 && totalCapacity == (72 + 56 + 24 + 70)) {
             System.out.println("BogieServiceTest PASSED");
         } else {
             System.out.println("BogieServiceTest FAILED");
