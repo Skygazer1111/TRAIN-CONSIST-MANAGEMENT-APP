@@ -1,5 +1,6 @@
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Map;
 
 public class TrainConsistManagementApp {
 
@@ -7,6 +8,7 @@ public class TrainConsistManagementApp {
 
         System.out.println("============================");
         System.out.println("Total Train Capacity");
+        System.out.println("Group Bogies by Type");
         System.out.println("============================\n");
 
         List<Bogie> bogieList = new ArrayList<>();
@@ -15,11 +17,23 @@ public class TrainConsistManagementApp {
         bogieList.add(new Bogie("AC Chair", 56));
         bogieList.add(new Bogie("Sleeper", 70));
         bogieList.add(new Bogie("First Class", 24));
+        bogieList.add(new Bogie("AC Chair", 58));
 
         BogieService service = new BogieService();
 
         int totalCapacity = service.getTotalCapacity(bogieList);
 
         System.out.println("Total Seating Capacity: " + totalCapacity);
+
+        Map<String, List<Bogie>> grouped = service.groupByType(bogieList);
+
+        System.out.println("Grouped Bogies:\n");
+
+        for (Map.Entry<String, List<Bogie>> entry : grouped.entrySet()) {
+            System.out.println(entry.getKey() + ":");
+            for (Bogie b : entry.getValue()) {
+                System.out.println("  " + b);
+            }
+        }
     }
 }
