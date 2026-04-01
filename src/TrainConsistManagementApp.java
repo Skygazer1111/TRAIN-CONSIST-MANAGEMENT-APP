@@ -1,12 +1,12 @@
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Comparator;
 
 public class TrainConsistManagementApp {
+
     public static void main(String[] args) {
 
         System.out.println("============================");
-        System.out.println("Sort Bogies by Capacity");
+        System.out.println("Filter Bogies using Streams");
         System.out.println("============================\n");
 
         List<Bogie> bogieList = new ArrayList<>();
@@ -15,16 +15,11 @@ public class TrainConsistManagementApp {
         bogieList.add(new Bogie("AC Chair", 56));
         bogieList.add(new Bogie("First Class", 24));
 
-        System.out.println("Before Sorting:\n");
-        for (Bogie b : bogieList) {
-            System.out.println(b);
-        }
+        BogieService service = new BogieService();
 
-        bogieList.sort(Comparator.comparingInt(Bogie::getCapacity));
+        List<Bogie> filtered = service.filterByCapacity(bogieList, 60);
 
-        System.out.println("\nAfter Sorting (by Capacity):\n");
-        for (Bogie b : bogieList) {
-            System.out.println(b);
-        }
+        System.out.println("Filtered Bogies (capacity > 60):\n");
+        filtered.forEach(System.out::println);
     }
 }
