@@ -1,3 +1,4 @@
+import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
@@ -6,23 +7,46 @@ public class TrainConsistManagementApp {
 
     public static void main(String[] args) {
 
+        Scanner scanner = new Scanner(System.in);
+        ValidationService validator = new ValidationService();
+
         System.out.println("============================");
+        System.out.println("Train ID & Cargo Validation");
         System.out.println("Total Train Capacity");
         System.out.println("Group Bogies by Type");
         System.out.println("============================\n");
 
-        List<Bogie> bogieList = new ArrayList<>();
+        // Input
+        System.out.print("Enter Train ID: ");
+        String trainId = scanner.nextLine();
 
+        System.out.print("Enter Cargo Code: ");
+        String cargoCode = scanner.nextLine();
+
+        // Validation
+        boolean isTrainValid = validator.isValidTrainId(trainId);
+        boolean isCargoValid = validator.isValidCargoCode(cargoCode);
+
+        System.out.println("\nValidation Results:\n");
         bogieList.add(new Bogie("Sleeper", 72));
         bogieList.add(new Bogie("AC Chair", 56));
         bogieList.add(new Bogie("Sleeper", 70));
         bogieList.add(new Bogie("First Class", 24));
         bogieList.add(new Bogie("AC Chair", 58));
 
-        BogieService service = new BogieService();
+        if (isTrainValid) {
+            System.out.println("Train ID is VALID");
+        } else {
+            System.out.println("Train ID is INVALID");
+        }
 
-        int totalCapacity = service.getTotalCapacity(bogieList);
+        if (isCargoValid) {
+            System.out.println("Cargo Code is VALID");
+        } else {
+            System.out.println("Cargo Code is INVALID");
+        }
 
+        scanner.close();
         System.out.println("Total Seating Capacity: " + totalCapacity);
 
         Map<String, List<Bogie>> grouped = service.groupByType(bogieList);
