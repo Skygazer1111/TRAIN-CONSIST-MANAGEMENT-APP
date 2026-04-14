@@ -1,29 +1,44 @@
-import java.util.Arrays;
-
 public class TrainConsistManagementApp {
 
     public static void main(String[] args) {
-        System.out.println("============================================");
-        System.out.println("UC17 - Sort Bogie Names Using Arrays.sort()");
-        System.out.println("============================================\n");
+        System.out.println("========================================");
+        System.out.println("UC18 - Linear Search for Bogie ID");
+        System.out.println("========================================\n");
 
-        String[] bogieNames = {"Sleeper", "AC Chair", "First Class", "General", "Luxury"};
+        // Create array of bogie IDs
+        String[] bogieIds = {"BG101", "BG205", "BG309", "BG412", "BG550"};
 
-        System.out.println("Original Bogie Names:");
-        System.out.println(Arrays.toString(bogieNames));
+        // Bogie ID to search
+        String searchId = "BG309";
 
-        sortBogieNames(bogieNames);
+        // Display all bogies
+        System.out.println("Available Bogie IDs:");
+        for (String id : bogieIds) {
+            System.out.println(id);
+        }
 
-        System.out.println("\nSorted Bogie Names (Alphabetical):");
-        System.out.println(Arrays.toString(bogieNames));
+        // Linear search for requested ID
+        boolean found = searchBogieId(bogieIds, searchId);
 
-        System.out.println("\nUC17 sorting completed...");
+        if (found) {
+            System.out.println("\nBogie " + searchId + " found in train consist.");
+        } else {
+            System.out.println("\nBogie " + searchId + " not found in train consist.");
+        }
+
+        System.out.println("\nUC18 search completed...");
     }
 
-    public static void sortBogieNames(String[] bogieNames) {
-        if (bogieNames == null || bogieNames.length < 2) {
-            return;
+    public static boolean searchBogieId(String[] bogieIds, String searchId) {
+        if (bogieIds == null || searchId == null) {
+            return false;
         }
-        Arrays.sort(bogieNames);
+
+        for (String id : bogieIds) {
+            if (searchId.equals(id)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
