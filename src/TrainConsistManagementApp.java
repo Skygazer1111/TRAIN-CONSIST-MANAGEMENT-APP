@@ -4,34 +4,29 @@ public class TrainConsistManagementApp {
 
     public static void main(String[] args) {
         System.out.println("========================================");
-        System.out.println("UC19 - Binary Search for Bogie ID");
+        System.out.println("UC20 - Exception Handling During Search");
         System.out.println("========================================\n");
 
-        // Create array of bogie IDs
-        String[] bogieIds = {"BG101", "BG205", "BG309", "BG412", "BG550"};
-
-        // Ensure data is sorted before binary search (precondition)
-        Arrays.sort(bogieIds);
+        // Create bogie array (empty train scenario)
+        String[] bogieIds = {};
 
         // Search key
-        String key = "BG309";
+        String searchId = "BG101";
 
-        // Display all bogies
-        System.out.println("Sorted Bogie IDs:");
-        for (String id : bogieIds) {
-            System.out.println(id);
+        // Fail-fast validation before search
+        if (bogieIds.length == 0) {
+            throw new IllegalStateException("No bogies available in train. Cannot perform search.");
         }
 
-        // Binary search for requested ID
-        boolean found = binarySearchBogieId(bogieIds, key);
+        boolean found = searchBogieIdWithValidation(bogieIds, searchId);
 
         if (found) {
-            System.out.println("\nBogie " + key + " found using Binary Search.");
+            System.out.println("\nBogie " + searchId + " found in train consist.");
         } else {
-            System.out.println("\nBogie " + key + " not found using Binary Search.");
+            System.out.println("\nBogie " + searchId + " not found in train consist.");
         }
 
-        System.out.println("\nUC19 search completed...");
+        System.out.println("\nUC20 execution completed...");
     }
 
     // Kept for UC17 test compatibility
@@ -54,6 +49,13 @@ public class TrainConsistManagementApp {
             }
         }
         return false;
+    }
+
+    public static boolean searchBogieIdWithValidation(String[] bogieIds, String searchId) {
+        if (bogieIds == null || bogieIds.length == 0) {
+            throw new IllegalStateException("No bogies available in train. Cannot perform search.");
+        }
+        return searchBogieId(bogieIds, searchId);
     }
 
     public static boolean binarySearchBogieId(String[] bogieIds, String key) {
