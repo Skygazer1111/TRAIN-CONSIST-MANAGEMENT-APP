@@ -14,12 +14,13 @@ public class TestRunner {
         Result result5 = JUnitCore.runClasses(GoodsBogieTest.class);
         Result result6 = JUnitCore.runClasses(UseCase16TrainConsistMgmntTest.class);
         Result result7 = JUnitCore.runClasses(TrainConsistManagementAppTest.class);
+        Result result8 = JUnitCore.runClasses(TrainConsistManagementAppSearchTest.class);
         
         // Print summary
         System.out.println("\n=== Test Summary ===");
-        int totalTests = result1.getRunCount() + result2.getRunCount() + result3.getRunCount() + result4.getRunCount() + result5.getRunCount() + result6.getRunCount() + result7.getRunCount();
-        int totalFailures = result1.getFailureCount() + result2.getFailureCount() + result3.getFailureCount() + result4.getFailureCount() + result5.getFailureCount() + result6.getFailureCount() + result7.getFailureCount();
-        int totalIgnored = result1.getIgnoreCount() + result2.getIgnoreCount() + result3.getIgnoreCount() + result4.getIgnoreCount() + result5.getIgnoreCount() + result6.getIgnoreCount() + result7.getIgnoreCount();
+        int totalTests = result1.getRunCount() + result2.getRunCount() + result3.getRunCount() + result4.getRunCount() + result5.getRunCount() + result6.getRunCount() + result7.getRunCount() + result8.getRunCount();
+        int totalFailures = result1.getFailureCount() + result2.getFailureCount() + result3.getFailureCount() + result4.getFailureCount() + result5.getFailureCount() + result6.getFailureCount() + result7.getFailureCount() + result8.getFailureCount();
+        int totalIgnored = result1.getIgnoreCount() + result2.getIgnoreCount() + result3.getIgnoreCount() + result4.getIgnoreCount() + result5.getIgnoreCount() + result6.getIgnoreCount() + result7.getIgnoreCount() + result8.getIgnoreCount();
         
         System.out.println("Total Tests: " + totalTests);
         System.out.println("Failures: " + totalFailures);
@@ -38,6 +39,7 @@ public class TestRunner {
             printFailures(result5);
             printFailures(result6);
             printFailures(result7);
+            printFailures(result8);
         }
     }
     
